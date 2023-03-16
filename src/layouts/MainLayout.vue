@@ -8,7 +8,7 @@
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
           </q-avatar>
-          Questo è il mio titolo di pagina!
+          Questo è la testa della pagina!🤯
         </q-toolbar-title>
       </q-toolbar>
 
@@ -21,6 +21,23 @@
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" elevated>
       <!-- drawer content -->
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat
+      sollicitudin varius. Nunc convallis tortor in accumsan viverra.
+      Suspendisse ornare mauris non lobortis sagittis. Integer magna est,
+      commodo sed tristique eu, mollis quis ipsum. Pellentesque aliquet egestas
+      sollicitudin. Sed sit amet velit eget ante volutpat accumsan tempor ornare
+      mi. Aliquam aliquam dui eu purus aliquet, id luctus neque sodales. Integer
+      ac lectus erat. Etiam in aliquam neque. Sed eleifend eu eros non
+      fringilla. Donec hendrerit rutrum felis. Sed luctus tortor leo. Aenean
+      eget nisi eros. Orci varius natoque penatibus et magnis dis parturient
+      montes, nascetur ridiculus mus. Nulla nec mi consectetur, elementum arcu
+      vulputate, auctor ipsum. Aenean feugiat odio vel dui laoreet efficitur.
+      Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec
+      porttitor risus. Praesent pretium aliquam risus, a faucibus ligula
+      fringilla sit amet. Curabitur congue urna sed magna elementum finibus. Nam
+      imperdiet rutrum ligula, at egestas sem pellentesque eu. Curabitur rhoncus
+      erat nec pellentesque fermentum. Praesent eget massa sem. Orci varius
+      natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
     </q-drawer>
 
     <q-page-container>
@@ -33,7 +50,7 @@
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
           </q-avatar>
-          <div>Questo è il mio piede!</div>
+          <div>Questo è il piede della pagina! 🦶🏻</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
