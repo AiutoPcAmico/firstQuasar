@@ -37,10 +37,10 @@
 
       <q-btn
         class="q-mt-xl"
-        color="white"
-        text-color="blue"
+        color="green"
+        text-color="white"
         to="/"
-        label="Go Home"
+        label="Torna alla Home"
         no-caps
       />
     </div>
