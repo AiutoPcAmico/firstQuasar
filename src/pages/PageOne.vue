@@ -14,6 +14,7 @@
           no-data-label="nessun dato oppure si è verificato un errore"
           no-results-label="Mi spiace, non ho trovato risultati"
           :filter="filter"
+          @row-click="onRowClick"
         >
           <template v-slot:top-right>
             <q-input
@@ -133,6 +134,11 @@ export default defineComponent({
         this.listUsers = [];
       }
       this.isLoading = false;
+    },
+
+    onRowClick(evt, row) {
+      this.$router.push("/userDetails/" + row.id);
+      console.log(row.id);
     },
   },
   mounted() {
