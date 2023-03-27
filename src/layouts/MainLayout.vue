@@ -29,7 +29,7 @@
             label="Gestisci gli utenti"
           >
             <q-item-section avatar> <q-icon name="star" /> </q-item-section>
-            <q-item-section> Gestisci gli utenti </q-item-section>
+            <q-item-section> Aggiungi un utente </q-item-section>
           </q-item>
 
           <q-item clickable v-ripple to="/page3" label="Page Three">

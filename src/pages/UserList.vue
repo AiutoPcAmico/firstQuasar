@@ -3,7 +3,9 @@
     <div class="col">
       <q-card square class="shadow-24" style="width: 300px; height: 750px">
         <q-card-section class="bg-deep-purple-7">
-          <h4 class="text-h5 text-white q-my-md">Registration</h4>
+          <h4 class="text-h5 text-white q-my-md">
+            {{ isAnUpdate ? "Update User" : "Registration" }}
+          </h4>
           <div
             class="absolute-bottom-right q-pr-md"
             style="transform: translateY(50%)"
@@ -56,6 +58,7 @@
             </q-input>
 
             <q-input
+              v-if="!isAnUpdate"
               square
               clearable
               v-model="formState.password"
@@ -99,7 +102,7 @@
             size="lg"
             color="purple-4"
             class="full-width text-white"
-            label="Get Started"
+            :label="!isAnUpdate ? 'Get Started!' : 'Update User'"
             @click="() => saveData()"
             :disable="!isSaveEnabled"
           />
@@ -177,23 +180,37 @@ export default {
 
     return { formState, idUser, messageResultOperation };
   },
+
   methods: {
     async saveData() {
       try {
-        await this.$api.post("users/", this.formState);
-        this.messageResultOperation.messageNewUser = "New user Added!";
+        if (this.isAnUpdate) {
+          const result = await this.$api.put(
+            "users/" + this.$route.params.id,
+            this.formState
+          );
+
+          if (result.status === 200) {
+            this.$router.push("/pageOne");
+            this.messageResultOperation.messageNewUser = "User Updated!";
+          }
+        } else {
+          await this.$api.post("users/", this.formState);
+          this.$router.push("/pageOne");
+          this.messageResultOperation.messageNewUser = "New user Added!";
+        }
       } catch (error) {
         console.log(error);
         this.messageResultOperation.messageNewUser =
           error.response.data.message;
       }
-
-      console.log(this.formState);
     },
+
     async deleteUser() {
       try {
         await this.$api.delete("users/" + this.idUser.id);
         this.messageResultOperation.messageDeletedUser = "User deleted!";
+        this.$router.push("/pageOne");
       } catch (error) {
         console.log(error);
         if (error.response.status === 404)
@@ -203,14 +220,33 @@ export default {
             "Unkwown error! Verify your internet connection!";
       }
     },
+
+    async getUserDetails() {
+      try {
+        const { data } = await this.$api.get("users/" + this.$route.params.id);
+        this.formState.name = data.name;
+        this.formState.surname = data.surname;
+        this.formState.email = data.email;
+        this.formState.password = data.password;
+        this.formState.role = data.role;
+        this.formState.telephone = data.telephone;
+        this.formState.description = data.description;
+
+        this.idUser.id = this.$route.params.id;
+      } catch (error) {
+        console.error("Si è verificato un errore durante il recupero dei dati");
+      }
+      this.isLoading = false;
+    },
   },
+
   computed: {
     isSaveEnabled() {
       if (
-        this.formState.name !== "" &&
-        this.formState.surname !== "" &&
-        this.formState.email !== "" &&
-        this.formState.password !== ""
+        !!this.formState.name &&
+        !!this.formState.surname &&
+        !!this.formState.email &&
+        (!!this.formState.password || this.isAnUpdate)
       ) {
         return true;
       } else {
@@ -222,6 +258,16 @@ export default {
       if (this.idUser.id && this.idUser.id.length === 24) return true;
       else return false;
     },
+
+    isAnUpdate() {
+      return !!this.$route.params.id;
+    },
+  },
+
+  created() {
+    if (this.$route.params.id) {
+      this.getUserDetails();
+    }
   },
 };
 </script>

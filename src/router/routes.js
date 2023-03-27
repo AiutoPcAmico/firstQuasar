@@ -15,9 +15,9 @@ const routes = [
     children: [{ path: "", component: () => import("pages/UserList.vue") }],
   },
   {
-    path: "/userDetails/:id",
+    path: "/userList/:id",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/UserDetail.vue") }],
+    children: [{ path: "", component: () => import("pages/UserList.vue") }],
   },
 
   // Always leave this as last one,

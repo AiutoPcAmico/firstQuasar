@@ -124,7 +124,7 @@ export default defineComponent({
       try {
         const { data } = await this.$api.get("users", {
           params: {
-            limit: 100,
+            limit: 600,
           },
         });
         console.log(data);
@@ -137,7 +137,7 @@ export default defineComponent({
     },
 
     onRowClick(evt, row) {
-      this.$router.push("/userDetails/" + row.id);
+      this.$router.push("/userList/" + row.id);
       console.log(row.id);
     },
   },
