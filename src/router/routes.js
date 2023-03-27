@@ -10,6 +10,11 @@ const routes = [
     children: [{ path: "", component: () => import("pages/PageOne.vue") }],
   },
   {
+    path: "/userList",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/UserList.vue") }],
+  },
+  {
     path: "/userDetails/:id",
     component: () => import("layouts/MainLayout.vue"),
     children: [{ path: "", component: () => import("pages/UserDetail.vue") }],

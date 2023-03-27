@@ -11,33 +11,33 @@
           Questo è la testa della pagina!🤯
         </q-toolbar-title>
       </q-toolbar>
-
-      <q-tabs align="left">
-        <q-route-tab to="/pageOne" label="Page One" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
-      </q-tabs>
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" elevated>
-      <!-- drawer content -->
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat
-      sollicitudin varius. Nunc convallis tortor in accumsan viverra.
-      Suspendisse ornare mauris non lobortis sagittis. Integer magna est,
-      commodo sed tristique eu, mollis quis ipsum. Pellentesque aliquet egestas
-      sollicitudin. Sed sit amet velit eget ante volutpat accumsan tempor ornare
-      mi. Aliquam aliquam dui eu purus aliquet, id luctus neque sodales. Integer
-      ac lectus erat. Etiam in aliquam neque. Sed eleifend eu eros non
-      fringilla. Donec hendrerit rutrum felis. Sed luctus tortor leo. Aenean
-      eget nisi eros. Orci varius natoque penatibus et magnis dis parturient
-      montes, nascetur ridiculus mus. Nulla nec mi consectetur, elementum arcu
-      vulputate, auctor ipsum. Aenean feugiat odio vel dui laoreet efficitur.
-      Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras nec
-      porttitor risus. Praesent pretium aliquam risus, a faucibus ligula
-      fringilla sit amet. Curabitur congue urna sed magna elementum finibus. Nam
-      imperdiet rutrum ligula, at egestas sem pellentesque eu. Curabitur rhoncus
-      erat nec pellentesque fermentum. Praesent eget massa sem. Orci varius
-      natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      <q-scroll-area class="fit">
+        <q-list padding class="menu-list">
+          <q-item clickable v-ripple to="/pageOne" label="Page One">
+            <q-item-section avatar> <q-icon name="inbox" /> </q-item-section>
+            <q-item-section> PageOne </q-item-section>
+          </q-item>
+
+          <q-item
+            active
+            clickable
+            v-ripple
+            to="/userList"
+            label="Gestisci gli utenti"
+          >
+            <q-item-section avatar> <q-icon name="star" /> </q-item-section>
+            <q-item-section> Gestisci gli utenti </q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple to="/page3" label="Page Three">
+            <q-item-section avatar><q-icon name="send" /> </q-item-section>
+            <q-item-section> NULL Page </q-item-section>
+          </q-item>
+        </q-list>
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
