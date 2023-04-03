@@ -1,6 +1,8 @@
 import { store } from "quasar/wrappers";
 import { createLogger, createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
+import user from "./user";
 // import example from './module-example'
 
 /*
@@ -20,7 +22,7 @@ const storePbj = createStore({
     createLogger(),
     createPersistedState({
       key: "quasar-my-project",
-      user: this.user,
+      paths: ["user"],
     }),
   ],
   // enable strict mode (adds overhead!)

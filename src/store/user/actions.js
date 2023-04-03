@@ -1,6 +1,6 @@
 export async function login({ commit, getters, dispatch }, payload) {
   try {
-    const { email, password } = payloaf;
+    const { email, password } = payload;
     try {
       const { data } = await api.post("auth", undefined, {
         Headers: {
