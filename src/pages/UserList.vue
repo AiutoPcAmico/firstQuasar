@@ -1,5 +1,6 @@
 <template>
   <div class="row">
+    <div class="col"></div>
     <div class="col">
       <q-card square class="shadow-24" style="width: 300px; height: 750px">
         <q-card-section class="bg-deep-purple-7">

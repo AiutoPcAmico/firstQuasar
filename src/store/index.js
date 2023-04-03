@@ -1,5 +1,5 @@
-import { store } from 'quasar/wrappers'
-import { createStore } from 'vuex'
+import { store } from "quasar/wrappers";
+import { createLogger, createStore } from "vuex";
 
 // import example from './module-example'
 
@@ -12,16 +12,23 @@ import { createStore } from 'vuex'
  * with the Store instance.
  */
 
+const storePbj = createStore({
+  modules: {
+    user,
+  },
+  plugins: [
+    createLogger(),
+    createPersistedState({
+      key: "quasar-my-project",
+      user: this.user,
+    }),
+  ],
+  // enable strict mode (adds overhead!)
+  // for dev mode and --debug builds only
+  strict: process.env.DEBUGGING,
+});
+
 export default store(function (/* { ssrContext } */) {
-  const Store = createStore({
-    modules: {
-      // example
-    },
-
-    // enable strict mode (adds overhead!)
-    // for dev mode and --debug builds only
-    strict: process.env.DEBUGGING
-  })
-
-  return Store
-})
+  const Store = storePbj;
+  return Store;
+});
