@@ -22,17 +22,13 @@
 
 <script>
 import { useDialogPluginComponent } from "quasar";
+import { ref } from "vue";
+import { api } from "src/boot/axios";
+import { useStore } from "vuex";
 
 export default {
   props: {
     // ...your custom props
-  },
-
-  data: function () {
-    return {
-      username: "",
-      password: "",
-    };
   },
 
   computed: {
@@ -45,10 +41,16 @@ export default {
   emits: [
     // REQUIRED; need to specify some events that your
     // component will emit through useDialogPluginComponent()
-    ...useDialogPluginComponent.emits,
+    "ok",
+    "hide",
   ],
+  methods: {},
 
   setup() {
+    const username = ref("");
+    const password = ref("");
+    const store = useStore();
+
     // REQUIRED; must be called inside of setup()
     const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
       useDialogPluginComponent();
@@ -68,10 +70,15 @@ export default {
 
       // other methods that we used in our vue html template;
       // these are part of our example (so not required)
-      onOKClick() {
+      async onOKClick() {
         // on OK, it is REQUIRED to
         // call onDialogOK (with optional payload)
-        console.log(this.username & " " & this.pass);
+        console.log(username.value);
+        await store.dispatch("login", {
+          username: username.value,
+          password: password.value,
+        });
+
         onDialogOK();
         // or with payload: onDialogOK({ ... })
         // ...and it will also hide the dialog automatically
@@ -79,6 +86,9 @@ export default {
 
       // we can passthrough onDialogCancel directly
       onCancelClick: onDialogCancel,
+
+      username,
+      password,
     };
   },
 };

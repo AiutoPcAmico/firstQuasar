@@ -11,7 +11,7 @@
           :loading="isLoading"
           rows-per-page-label="Righe per Pagina: "
           loading-label="Caricamento in corso..."
-          no-data-label="nessun dato oppure si è verificato un errore"
+          no-data-label="Nessun Dato o utente non loggato!"
           no-results-label="Mi spiace, non ho trovato risultati"
           :filter="filter"
           @row-click="onRowClick"
