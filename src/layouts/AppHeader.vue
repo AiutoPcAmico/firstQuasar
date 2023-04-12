@@ -32,9 +32,9 @@
           <q-item-section> Aggiungi un utente </q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple to="/page3" label="Page Three">
+        <q-item clickable v-ripple to="/chatPage" label="Chat Page">
           <q-item-section avatar><q-icon name="send" /> </q-item-section>
-          <q-item-section> NULL Page </q-item-section>
+          <q-item-section> Chat Page </q-item-section>
         </q-item>
       </q-list>
     </q-scroll-area>

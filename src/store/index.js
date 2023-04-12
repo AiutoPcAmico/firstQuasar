@@ -3,6 +3,7 @@ import { createLogger, createStore } from "vuex";
 import createPersistedState from "vuex-persistedstate";
 
 import user from "./user";
+import chats from "./chats";
 // import example from './module-example'
 
 /*
@@ -17,6 +18,7 @@ import user from "./user";
 const storePbj = createStore({
   modules: {
     user,
+    chats,
   },
   plugins: [
     createLogger(),
